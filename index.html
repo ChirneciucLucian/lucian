@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projectdocumentatie – Week 11</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .cursor-circle {
+      position: fixed;
+      pointer-events: none;
+      width: 50vw;
+      height: 50vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, #D64BB2, #8A2BE2);
+      opacity: 0.35;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      filter: blur(150px);
+      transition: background 0.3s, opacity 0.3s;
+  }
+
+  body {
+      background-color: #1A0033;
+      background-image: 
+          radial-gradient(circle at 10% 50%, rgba(0,0,0,0.4), transparent 70%),
+          radial-gradient(circle at 90% 50%, rgba(0,0,0,0.4), transparent 70%),
+          linear-gradient(135deg, #1A0033, #00004B);
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+
+  .glass-btn {
+      display: block;
+      position: relative;
+      z-index: 50;
+      text-align: left;
+      background: rgba(255,255,255,0.1); 
+      backdrop-filter: blur(10px);
+      border-radius: 0.5rem;
+      border: 1px solid rgba(255,255,255,0.3); 
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: white;
+      overflow: hidden;
+      transition: transform 0.2s ease-out, border-color 0.2s ease-out;
+  }
+
+  .glass-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: white;
+      z-index: 0;
+      transition: left 0.4s ease;
+  }
+
+  .glass-btn span {
+      position: relative;
+      z-index: 10;
+      transition: color 0.4s ease;
+  }
+
+  .glass-btn:hover::before {
+      left: 0;
+  }
+
+  .glass-btn:hover span {
+      color: #FF2D90;
+  }
+
+  .glass-btn.active::before {
+      left: 0;
+  }
+
+  .glass-btn.active span {
+      color: #FF2D90;
+  }
+
+  main {
+      background: rgba(255,255,255,0.1); 
+      border: 1px solid rgba(255,255,255,0.3); 
+      backdrop-filter: blur(10px);
+  }
+</style>
+</head>
+<body class="min-h-screen text-gray-100 relative overflow-hidden">
+
+<div class="cursor-circle"></div>
+
+<div class="relative z-10 max-w-6xl mx-auto p-6">
+
+<header class="mb-8 text-left">
+<h1 class="text-3xl font-bold">PROJECTDOCUMENTATIE</h1>
+<h2 class="text-lg text-gray-200">Lucian Chirneciuc – 1GDM1</h2>
+</header>
+
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+
+<nav class="md:col-span-1 z-10">
+<div class="grid grid-cols-2 gap-3">
+
+<ul class="space-y-3 list-none text-left">
+<li><a href="page1.html" class="glass-btn"><span>Week 1</span></a></li>
+<li><a href="page2.html" class="glass-btn"><span>Week 2</span></a></li>
+<li><a href="page3.html" class="glass-btn"><span>Week 3</span></a></li>
+<li><a href="page4.html" class="glass-btn"><span>Week 4</span></a></li>
+<li><a href="page5.html" class="glass-btn"><span>Week 5</span></a></li>
+<li><a href="page6.html" class="glass-btn"><span>Week 6</span></a></li>
+<li><a href="page7.html" class="glass-btn"><span>Week 7</span></a></li>
+</ul>
+
+<ul class="space-y-3 list-none text-left">
+<li><a href="page8.html" class="glass-btn"><span>Week 8</span></a></li>
+<li><a href="page9.html" class="glass-btn"><span>Week 9</span></a></li>
+<li><a href="page10.html" class="glass-btn"><span>Week 10</span></a></li>
+<li><a href="page11.html" class="glass-btn"><span>Week 11</span></a></li>
+<li><a href="page12.html" class="glass-btn"><span>Week 12</span></a></li>
+<li><a href="page13.html" class="glass-btn"><span>Week 13</span></a></li>
+<li><a href="page14.html" class="glass-btn"><span>Week 14</span></a></li>
+</ul>
+
+<li class="col-span-2 mt-3 list-none">
+<a href="index.html" class="glass-btn w-full text-center active"><span>Home</span></a>
+</li>
+
+</div>
+</nav>
+
+<main class="md:col-span-3 p-6 rounded-lg shadow z-10 text-left">
+<h1 class="text-2xl font-semibold mb-1">Home</h1>
+<h2 class="text-sm text-gray-200 mb-4">1ste semester</h2>
+<p class="mb-6 font-bold">
+lost in trainstation</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+-
+    <div class="column">
+<p></p>
+</div>
+<div class="column">
+<p></p>
+</div>
+</div>
+</main>
+
+</div>
+</div>
+
+<script>
+const circle = document.querySelector('.cursor-circle');
+let mouseX = 0, mouseY = 0;
+let circleX = 0, circleY = 0;
+let hoverBtn = false;
+
+document.querySelectorAll('nav a').forEach(btn => {
+    btn.addEventListener('mouseenter', () => hoverBtn = true);
+    btn.addEventListener('mouseleave', () => hoverBtn = false);
+});
+
+function animate() {
+    circleX += (mouseX - circleX) * 0.15;
+    circleY += (mouseY - circleY) * 0.15;
+    circle.style.transform = `translate(${circleX - circle.offsetWidth/2}px, ${circleY - circle.offsetHeight/2}px)`;
+
+    if (hoverBtn) {
+        circle.style.background = 'radial-gradient(circle, #FF2D90, #8A2BE2)';
+        circle.style.opacity = '0.5';
+    } else {
+        circle.style.background = 'radial-gradient(circle, #D64BB2, #8A2BE2)';
+        circle.style.opacity = '0.35';
+    }
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>
