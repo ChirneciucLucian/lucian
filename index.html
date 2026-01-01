@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projectdocumentatie – Week 11</title>
+<title>Projectdocumentatie – Week 12</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   .cursor-circle {
@@ -25,9 +25,10 @@
       background-image: 
           radial-gradient(circle at 10% 50%, rgba(0,0,0,0.4), transparent 70%),
           radial-gradient(circle at 90% 50%, rgba(0,0,0,0.4), transparent 70%),
-          linear-gradient(135deg, #1A0033, #00004B);
+          linear-gradient(135deg, #1A0033,#00004B);
       background-repeat: no-repeat;
       background-size: cover;
+      padding-bottom: 5rem;
   }
 
   .glass-btn {
@@ -65,26 +66,78 @@
       transition: color 0.4s ease;
   }
 
-  .glass-btn:hover::before {
-      left: 0;
+  .glass-btn:hover::before, .glass-btn.active::before { left: 0; }
+  .glass-btn:hover span, .glass-btn.active span { color: #FF2D90; }
+
+  /* Download / link buttons - static background, hover text color */
+  .download-btn, .link-btn {
+      display: inline-block;
+      text-align: center;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 0.5rem;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      width: 12rem;
+      margin-bottom: 0.5rem;
   }
 
-  .glass-btn:hover span {
-      color: #FF2D90;
-  }
-
-  .glass-btn.active::before {
-      left: 0;
-  }
-
-  .glass-btn.active span {
-      color: #FF2D90;
-  }
+  .download-btn::before, .link-btn::before { display: none; }
+  .download-btn span, .link-btn span { transition: color 0.4s ease; }
+  .download-btn:hover span, .link-btn:hover span { color: #FF2D90; }
 
   main {
       background: rgba(255,255,255,0.1); 
       border: 1px solid rgba(255,255,255,0.3); 
       backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* pushes buttons to bottom */
+      padding: 1.5rem;
+      min-height: 400px; /* ensure enough height for layout */
+  }
+
+  .footer {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12rem;
+      height: 3rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      padding: 0 1rem;
+      cursor: pointer;
+  }
+
+  .footer a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+  }
+
+  .footer a:hover {
+      color: #FF2D90;
+  }
+
+  /* Container for vertical buttons inside main, flush bottom left */
+  .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 1rem;
   }
 </style>
 </head>
@@ -131,23 +184,32 @@
 </div>
 </nav>
 
-<main class="md:col-span-3 p-6 rounded-lg shadow z-10 text-left">
-<h1 class="text-2xl font-semibold mb-1">Home</h1>
-<h2 class="text-sm text-gray-200 mb-4">1ste semester</h2>
-<p class="mb-6 font-bold">
-lost in trainstation</p>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
--
-    <div class="column">
-<p></p>
+<main class="md:col-span-3 rounded-lg shadow z-10 text-left">
+<div>
+  <h1 class="text-2xl font-semibold mb-1">Lost in trainstation</h1>
+  <h2 class="text-sm text-gray-200 mb-4">1ste semester</h2>
+  <p class="mb-6 font-bold"></p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+    <p>Dit is mijn processdocumentatie. Hieronder kan je de pdf en figma link vinden. In de footer is de link naar Github.</p>
+  </div>
 </div>
-<div class="column">
-<p></p>
-</div>
+
+<!-- Buttons aligned at the bottom left of the main box -->
+<div class="button-container">
+  <a href="chirneciucL-app-trinschermen.pdf" download class="download-btn">
+    <span>Download PDF</span>
+  </a>
+  <a href="https://www.figma.com/design/KsOveubTwAC96rbhgwg7QE/midi-prototype?node-id=80-554&t=mdJ6GLvA5PdeaX6i-1" target="_blank" class="link-btn">
+    <span>Figma app Link</span>
+  </a>
 </div>
 </main>
 
 </div>
+</div>
+
+<div class="footer">
+    <a href="https://github.com/ChirneciucLucian/lucian" target="_blank"> GitHub</a>
 </div>
 
 <script>
@@ -156,10 +218,20 @@ let mouseX = 0, mouseY = 0;
 let circleX = 0, circleY = 0;
 let hoverBtn = false;
 
-document.querySelectorAll('nav a').forEach(btn => {
-    btn.addEventListener('mouseenter', () => hoverBtn = true);
-    btn.addEventListener('mouseleave', () => hoverBtn = false);
+const interactElements = document.querySelectorAll('nav a, .footer');
+interactElements.forEach(el => {
+    el.addEventListener('mouseenter', () => hoverBtn = true);
+    el.addEventListener('mouseleave', () => hoverBtn = false);
 });
+
+const activeBtn = document.querySelector('.glass-btn.active');
+if (activeBtn) {
+    const rect = activeBtn.getBoundingClientRect();
+    circleX = rect.left + rect.width / 2;
+    circleY = rect.top + rect.height / 2;
+    mouseX = circleX;
+    mouseY = circleY;
+}
 
 function animate() {
     circleX += (mouseX - circleX) * 0.15;
@@ -176,6 +248,11 @@ function animate() {
 
     requestAnimationFrame(animate);
 }
+
+window.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
 
 animate();
 </script>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projectdocumentatie – Week 11</title>
+<title>Projectdocumentatie – Week 12</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   .cursor-circle {
@@ -134,11 +134,11 @@
 <main class="md:col-span-3 p-6 rounded-lg shadow z-10 text-left">
 <h1 class="text-2xl font-semibold mb-1">Week 14</h1>
 <h2 class="text-sm text-gray-200 mb-4">18 december</h2>
-<p class="mb-6 font-bold">
-Processdocumentatie en Tailwind.</p>
+<p class="mb-6 font-bold">Hele processdocumentatie opniew maken (deze versie)</p>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
--
-    <div class="column">
+<p>
+Deze week maar ook de rest van de kerst vakantie de processdocumentatie opnieuw gemaakt zodat die beter is en ook kleine aanpassingen gemaakt aan de Figma app. 
+<div class="column">
 <p></p>
 </div>
 <div class="column">
@@ -149,17 +149,25 @@ Processdocumentatie en Tailwind.</p>
 
 </div>
 </div>
-
+<!-- Footer -->
+<div class="footer fixed bottom-6 left-1/2 transform -translate-x-1/2 w-48 h-12 bg-white/10 border border-white/30 backdrop-blur-md rounded-md flex items-center justify-center z-20 cursor-pointer">
+  <a href="https://github.com/ChirneciucLucian/lucian" target="_blank" class="text-white font-medium hover:text-pink-500">
+    GitHub
+  </a>
+</div>
 <script>
 const circle = document.querySelector('.cursor-circle');
 let mouseX = 0, mouseY = 0;
 let circleX = 0, circleY = 0;
 let hoverBtn = false;
 
-document.querySelectorAll('nav a').forEach(btn => {
-    btn.addEventListener('mouseenter', () => hoverBtn = true);
-    btn.addEventListener('mouseleave', () => hoverBtn = false);
+// Selecteer alle knoppen én de footer
+const hoverElements = document.querySelectorAll('nav a, .footer');
+hoverElements.forEach(el => {
+    el.addEventListener('mouseenter', () => hoverBtn = true);
+    el.addEventListener('mouseleave', () => hoverBtn = false);
 });
+
 
 function animate() {
     circleX += (mouseX - circleX) * 0.15;
@@ -176,6 +184,11 @@ function animate() {
 
     requestAnimationFrame(animate);
 }
+
+window.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
 
 animate();
 </script>

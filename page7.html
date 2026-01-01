@@ -133,28 +133,43 @@
             <h1 class="text-2xl font-semibold mb-1">Week 7</h1>
             <h2 class="text-sm text-gray-200 mb-4">30 oktober</h2>
             <p class="mb-6 font-bold">
-                Studeren voor examens. 
+                3 Figma schermen. 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                 <div>
-                    Hier heb ik geen progressie gemaakt, omwille van de examens die opkwamen.
-            </p>
-                <div></div>
+Ik heb mijn 3 schermen afgewerkt. ik heb gekozen voor een witte achtergrond en rood-blauwe accenten. 
+                </p>
+   <div class="flex justify-start -mt-[11rem] ml-[26rem] overflow-hidden rounded-lg w-[350px]">
+  <img
+    src="images/week7.png"
+    alt="Week 7 schets"
+    class="w-full h-auto cursor-pointer"
+    onclick="document.getElementById('imgModal').classList.remove('hidden')"
+  >
+</div>
             </div>
         </main>
 
     </div>
 </div>
-
+<!-- Footer -->
+<div class="footer fixed bottom-6 left-1/2 transform -translate-x-1/2 w-48 h-12 bg-white/10 border border-white/30 backdrop-blur-md rounded-md flex items-center justify-center z-20 cursor-pointer">
+  <a href="https://github.com/ChirneciucLucian/lucian" target="_blank" class="text-white font-medium hover:text-pink-500">
+    GitHub
+  </a>
+</div>
 <script>
 const circle = document.querySelector('.cursor-circle');
 let mouseX = 0, mouseY = 0;
 let circleX = 0, circleY = 0;
 let hoverBtn = false;
 
-document.querySelectorAll('nav a').forEach(btn => {
-    btn.addEventListener('mouseenter', () => hoverBtn = true);
-    btn.addEventListener('mouseleave', () => hoverBtn = false);
+// Selecteer alle knoppen én de footer
+const hoverElements = document.querySelectorAll('nav a, .footer');
+hoverElements.forEach(el => {
+    el.addEventListener('mouseenter', () => hoverBtn = true);
+    el.addEventListener('mouseleave', () => hoverBtn = false);
 });
+
 
 function animate() {
     circleX += (mouseX - circleX) * 0.15;
@@ -177,6 +192,15 @@ window.addEventListener('mousemove', e => {
 
 animate();
 </script>
-
+<!-- Image modal -->
+<div
+  id="imgModal"
+  class="fixed inset-0 hidden bg-black/80 flex items-center justify-center z-50"
+  onclick="this.classList.add('hidden')"
+>
+  <img
+    src="images/week7.png"
+    class="max-w-[90vw] max-h-[90vh] rounded-lg"
+  >
 </body>
 </html>

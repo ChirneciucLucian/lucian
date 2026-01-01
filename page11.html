@@ -137,7 +137,7 @@
 <p class="mb-6 font-bold">
 Heel veel Figma.</p>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-    Ik heb alleen in Figma gewerkt. Ik hed mijn 3 schermen en nu was ik begonnen met de uitbreiding. Dus heb ik de meeste dingen clickable gemaakt en ook allemaal andere schermen ook toegevoegd. Ook ben ik begonnen met een darm mode te maken.
+    Ik heb alleen in Figma gewerkt. Ik hed mijn 3 schermen en nu was ik begonnen met de uitbreiding. Dus heb ik de meeste dingen clickable gemaakt en ook allemaal andere schermen ook toegevoegd. Ook ben ik begonnen met een dark mode te maken.
 <div class="column">
 <p></p>
 </div>
@@ -149,17 +149,25 @@ Heel veel Figma.</p>
 
 </div>
 </div>
-
+<!-- Footer -->
+<div class="footer fixed bottom-6 left-1/2 transform -translate-x-1/2 w-48 h-12 bg-white/10 border border-white/30 backdrop-blur-md rounded-md flex items-center justify-center z-20 cursor-pointer">
+  <a href="https://github.com/ChirneciucLucian/lucian" target="_blank" class="text-white font-medium hover:text-pink-500">
+    GitHub
+  </a>
+</div>
 <script>
 const circle = document.querySelector('.cursor-circle');
 let mouseX = 0, mouseY = 0;
 let circleX = 0, circleY = 0;
 let hoverBtn = false;
 
-document.querySelectorAll('nav a').forEach(btn => {
-    btn.addEventListener('mouseenter', () => hoverBtn = true);
-    btn.addEventListener('mouseleave', () => hoverBtn = false);
+// Selecteer alle knoppen én de footer
+const hoverElements = document.querySelectorAll('nav a, .footer');
+hoverElements.forEach(el => {
+    el.addEventListener('mouseenter', () => hoverBtn = true);
+    el.addEventListener('mouseleave', () => hoverBtn = false);
 });
+
 
 function animate() {
     circleX += (mouseX - circleX) * 0.15;

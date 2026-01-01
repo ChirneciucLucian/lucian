@@ -143,30 +143,44 @@
         <main class="md:col-span-3 p-6 rounded-lg shadow z-10 text-left">
             <h1 class="text-2xl font-semibold mb-1">Week 5</h1>
             <h2 class="text-sm text-gray-200 mb-4">16 oktober</h2>
-            <p class="mb-6 font-bold">Hopen dat iets zal werken</p>
+            <p class="mb-6 font-bold">Hopen dat iets zal werken en persoonsschermen</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                 <div>
                     <p>
-Het werd alleen erger. Deze week heb ik alleen rond gesukkelt zonder echt verder te gaan. Ik dacht dat ik het nooit zal gaan begrijpen. 
+Deze week heb ik vooral rond gesukkelt zonder echt verder te gaan in de code. Ik dacht dat ik het nooit zal gaan begrijpen. Ook heb ik verder gewerk voor mijn persoonsschermen.
                     </p>
                 </div>
-                <div></div>
-            </div>
+                <div class="flex justify-start -mt-[3rem] ml-[5rem]">
+  <img
+    src="images/week5.png"
+    alt="Week 3 schets"
+    class="w-60 scale-150 rounded-lg cursor-pointer"
+    onclick="document.getElementById('imgModal').classList.remove('hidden')"
+  >
+         </div>
         </main>
 
     </div>
 </div>
-
+<!-- Footer -->
+<div class="footer fixed bottom-6 left-1/2 transform -translate-x-1/2 w-48 h-12 bg-white/10 border border-white/30 backdrop-blur-md rounded-md flex items-center justify-center z-20 cursor-pointer">
+  <a href="https://github.com/ChirneciucLucian/lucian" target="_blank" class="text-white font-medium hover:text-pink-500">
+    GitHub
+  </a>
+</div>
 <script>
 const circle = document.querySelector('.cursor-circle');
 let mouseX = 0, mouseY = 0;
 let circleX = 0, circleY = 0;
 let hoverBtn = false;
 
-document.querySelectorAll('nav a').forEach(btn => {
-    btn.addEventListener('mouseenter', () => hoverBtn = true);
-    btn.addEventListener('mouseleave', () => hoverBtn = false);
+// Selecteer alle knoppen én de footer
+const hoverElements = document.querySelectorAll('nav a, .footer');
+hoverElements.forEach(el => {
+    el.addEventListener('mouseenter', () => hoverBtn = true);
+    el.addEventListener('mouseleave', () => hoverBtn = false);
 });
+
 
 function animate() {
     circleX += (mouseX - circleX) * 0.15;
@@ -189,6 +203,16 @@ window.addEventListener('mousemove', e => {
 
 animate();
 </script>
-
+<!-- Image modal -->
+<div
+  id="imgModal"
+  class="fixed inset-0 hidden bg-black/80 flex items-center justify-center z-50"
+  onclick="this.classList.add('hidden')"
+>
+  <img
+    src="images/week5.png"
+    class="max-w-[90vw] max-h-[90vh] rounded-lg"
+  >
+</div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projectdocumentatie – Week 1</title>
+<title>Projectdocumentatie – Week 2</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   /* Cursor tracker – 50% van scherm */
@@ -115,7 +115,7 @@
                 <!-- Eerste kolom (Week 1 t/m 7) -->
                 <ul class="space-y-3 list-none text-left">
                     <li><a href="page1.html" class="glass-btn active"><span>Week 1</span></a></li>
-                    <li><a href="page2.html" class="glass-btn"><span>Week 2</span></a></li>
+                    <li><a href="page2.html" class="glass-btn "><span>Week 2</span></a></li>
                     <li><a href="page3.html" class="glass-btn"><span>Week 3</span></a></li>
                     <li><a href="page4.html" class="glass-btn"><span>Week 4</span></a></li>
                     <li><a href="page5.html" class="glass-btn"><span>Week 5</span></a></li>
@@ -149,18 +149,31 @@
             <p class="mb-6 font-bold">Dit is de eerste week van prototyping tools.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                 <div>
-                    <p>
-                        In deze eerste week werd de opdracht uitgelegd:
-                        UI/UX, wireframes en de basis. Ik begon met
-                        eenvoudige schetsen van drie schermen in mijn
-                        schetsboek, met potlood en zonder te veel nadenken.
-                    </p>
+                    <p>In deze eerste week werd de opdracht uitgelegd: UI/UX, wireframes en de basis. Ik begon met eenvoudige schetsen van drie schermen in mijn schetsboek, met potlood en zonder te veel nadenken.</p>
                 </div>
-                <div></div>
+              <div class="flex justify-start -mt-[3rem] - ml-[10rem]">
+ <div class="flex justify-start -mt-[0.6rem] ml-[1rem]">
+  <img
+    src="images/week1.png"
+    alt="Week 1 schets"
+    class="w-40 scale-150 rounded-lg cursor-pointer"
+    onclick="document.getElementById('imgModal').classList.remove('hidden')"
+  >
+</div>
+
+
+
             </div>
         </main>
 
     </div>
+</div>
+
+<!-- Footer -->
+<div class="footer fixed bottom-6 left-1/2 transform -translate-x-1/2 w-48 h-12 bg-white/10 border border-white/30 backdrop-blur-md rounded-md flex items-center justify-center z-20 cursor-pointer">
+  <a href="https://github.com/ChirneciucLucian/lucian" target="_blank" class="text-white font-medium hover:text-pink-500">
+    GitHub
+  </a>
 </div>
 
 <script>
@@ -169,10 +182,11 @@ let mouseX = 0, mouseY = 0;
 let circleX = 0, circleY = 0;
 let hoverBtn = false;
 
-// Detect hover op alle knoppen
-document.querySelectorAll('nav a').forEach(btn => {
-    btn.addEventListener('mouseenter', () => hoverBtn = true);
-    btn.addEventListener('mouseleave', () => hoverBtn = false);
+// Selecteer alle knoppen én de footer
+const hoverElements = document.querySelectorAll('nav a, .footer');
+hoverElements.forEach(el => {
+    el.addEventListener('mouseenter', () => hoverBtn = true);
+    el.addEventListener('mouseleave', () => hoverBtn = false);
 });
 
 // Animatie loop
@@ -200,6 +214,18 @@ window.addEventListener('mousemove', e => {
 
 animate();
 </script>
+
+<!-- Image modal -->
+<div
+  id="imgModal"
+  class="fixed inset-0 hidden bg-black/80 flex items-center justify-center z-50"
+  onclick="this.classList.add('hidden')"
+>
+  <img
+    src="images/week1.png"
+    class="max-w-[90vw] max-h-[90vh] rounded-lg"
+  >
+</div>
 
 </body>
 </html>

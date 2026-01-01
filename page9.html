@@ -133,29 +133,44 @@
             <h1 class="text-2xl font-semibold mb-1">Week 9</h1>
             <h2 class="text-sm text-gray-200 mb-4">13 november</h2>
             <p class="mb-6 font-bold">
-                Deze week heb ik het meeste gedaan rond de portfolio. 
-            </p>
+Veel aan processdocumentatie            </p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                 <div>
             
-Nu is het serieus. Ik stond achter met mijn portfolio, er bleven maar stappen en uitbreidingen erbij komen. Dus heb ik actie genomen. Ik alles gestudeerd, gelezen en hard gefocust. Ik heb eindelijk begrepen hoe ik kan werken met VSC. Dus heb ik mijn kwart van portfolio weg gedaan en opnieuw begonnen. Dat is dan deze versie. Ik heb alle stappen van de vorige weken opnieuw gedaan en ook mijn wekelijkse portfolio aangevuld. Ook heb ik geprobeerd om Tailwind te gebruiken in de code. (mijn meest productive week voor dit vak)
+Ik stond achter met mijn portfolio, er bleven maar stappen en uitbreidingen erbij komen. Ik alles gestudeerd en gelezen. Ik heb eindelijk een beetje begrepen hoe ik kan werken met VSC. Dus heb ik mijn code weg gedaan en opnieuw begonnen. Ik heb alle stappen van de vorige weken opnieuw gedaan en ook mijn wekelijkse documentatie aangevuld. Ik heb geprobeerd om Tailwind te gebruiken in de code.
                 <div></div>
             </div>
+            <div class="flex justify-start -mt-[0.3rem] ml-[1rem] overflow-hidden rounded-lg w-[300]">
+  <img
+    src="images/week9.png"
+    alt="Week 9 schets"
+    class="w-full h-auto cursor-pointer"
+    onclick="document.getElementById('imgModal').classList.remove('hidden')"
+  >
+</div>
         </main>
 
     </div>
 </div>
-
+<!-- Footer -->
+<div class="footer fixed bottom-6 left-1/2 transform -translate-x-1/2 w-48 h-12 bg-white/10 border border-white/30 backdrop-blur-md rounded-md flex items-center justify-center z-20 cursor-pointer">
+  <a href="https://github.com/ChirneciucLucian/lucian" target="_blank" class="text-white font-medium hover:text-pink-500">
+    GitHub
+  </a>
+</div>
 <script>
 const circle = document.querySelector('.cursor-circle');
 let mouseX = 0, mouseY = 0;
 let circleX = 0, circleY = 0;
 let hoverBtn = false;
 
-document.querySelectorAll('nav a').forEach(btn => {
-    btn.addEventListener('mouseenter', () => hoverBtn = true);
-    btn.addEventListener('mouseleave', () => hoverBtn = false);
+// Selecteer alle knoppen én de footer
+const hoverElements = document.querySelectorAll('nav a, .footer');
+hoverElements.forEach(el => {
+    el.addEventListener('mouseenter', () => hoverBtn = true);
+    el.addEventListener('mouseleave', () => hoverBtn = false);
 });
+
 
 function animate() {
     circleX += (mouseX - circleX) * 0.15;
@@ -178,6 +193,15 @@ window.addEventListener('mousemove', e => {
 
 animate();
 </script>
-
+<!-- Image modal -->
+<div
+  id="imgModal"
+  class="fixed inset-0 hidden bg-black/80 flex items-center justify-center z-50"
+  onclick="this.classList.add('hidden')"
+>
+  <img
+    src="images/week9.png"
+    class="max-w-[90vw] max-h-[90vh] rounded-lg"
+  >
 </body>
 </html>

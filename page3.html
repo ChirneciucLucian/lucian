@@ -153,11 +153,27 @@
 In deze les kregen we feedback op de schetsen van vorige week. Ook kregen we de basis om met Figma te werken. Na het feedback van andere studenten heb ik nieuwe schetsen gemaakt. Ook ben ik aan de slag gegaan met Figma. Ik vond het niet zo moeilijk omdat het leek op andere software. Ik heb vooral keuzes gemaakt: kleuren, lay-out, ...
                     </p>
                 </div>
-                <div></div>
+                <div class="flex justify-start -mt-[3rem] ml-[10rem]">
+  <img
+    src="images/week3.png"
+    alt="Week 3 schets"
+    class="w-40 scale-150 rounded-lg cursor-pointer"
+    onclick="document.getElementById('imgModal').classList.remove('hidden')"
+  >
+</div>
+
+                </div>
             </div>
         </main>
 
     </div>
+</div>
+
+<!-- Footer -->
+<div class="footer fixed bottom-6 left-1/2 transform -translate-x-1/2 w-48 h-12 bg-white/10 border border-white/30 backdrop-blur-md rounded-md flex items-center justify-center z-20 cursor-pointer">
+  <a href="https://github.com/ChirneciucLucian/lucian" target="_blank" class="text-white font-medium hover:text-pink-500">
+    GitHub
+  </a>
 </div>
 
 <script>
@@ -166,10 +182,11 @@ let mouseX = 0, mouseY = 0;
 let circleX = 0, circleY = 0;
 let hoverBtn = false;
 
-// Detect hover op alle knoppen
-document.querySelectorAll('nav a').forEach(btn => {
-    btn.addEventListener('mouseenter', () => hoverBtn = true);
-    btn.addEventListener('mouseleave', () => hoverBtn = false);
+// Selecteer alle knoppen én de footer
+const hoverElements = document.querySelectorAll('nav a, .footer');
+hoverElements.forEach(el => {
+    el.addEventListener('mouseenter', () => hoverBtn = true);
+    el.addEventListener('mouseleave', () => hoverBtn = false);
 });
 
 // Animatie loop
@@ -197,6 +214,18 @@ window.addEventListener('mousemove', e => {
 
 animate();
 </script>
+
+<!-- Image modal -->
+<div
+  id="imgModal"
+  class="fixed inset-0 hidden bg-black/80 flex items-center justify-center z-50"
+  onclick="this.classList.add('hidden')"
+>
+  <img
+    src="images/week3.png"
+    class="max-w-[90vw] max-h-[90vh] rounded-lg"
+  >
+</div>
 
 </body>
 </html>
